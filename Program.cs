@@ -10,7 +10,7 @@
 // < > проверка на больше или меньше площади магазина
 // != и Equals
 
-shop f= new shop("dfgsd","dfs",8);
+shop f = new shop("dfgsd","dfs",8);
 
 Console.WriteLine(f + 4);
 
@@ -26,15 +26,22 @@ class shop
         _description = descriptions;
         _sqare = sqare;
     }
-    public int Get_sqare(int sqare)
-    {
-        int _sqare = sqare;
-        return _sqare;
-    }
+
+
     public static shop operator +(shop v1,int d)
     {
         v1._sqare += d;
         return v1;
        
+    }
+
+    public static bool operator ==(shop? left, shop? right)
+    {
+        return EqualityComparer<shop>.Default.Equals(left, right);
+    }
+
+    public static bool operator !=(shop? left, shop? right)
+    {
+        return !(left == right);
     }
 }
